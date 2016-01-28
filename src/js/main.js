@@ -26,7 +26,7 @@
 	var buttonEquals = document.getElementById('button-equals');
 	var calcScreen = document.getElementById('screen');
 	var calculation;
-
+    var result;
 
 /*
 * @description Clears the calculator screen
@@ -40,6 +40,12 @@ function clearScreen() {
 * with the value of the button pressed
 */
 function updateScreen(button) {
+
+    if (Number(calcScreen.innerHTML)===result) {
+        clearScreen();
+    }
+
+
 	if (Number(calcScreen.innerHTML) === 0) {
 		calcScreen.innerHTML = button.value;
 	} else {
@@ -63,7 +69,7 @@ function getValue() {
 function calculate() {
 	calculation += Number(calcScreen.innerHTML);
 
-	var result = eval(calculation);
+	result = eval(calculation);
 	calcScreen.innerHTML = result;
 };
 
@@ -117,7 +123,8 @@ buttonEquals.addEventListener('click', function () {
 * @description Event listeners for the number buttons
 */
 buttonOne.addEventListener('click', function() {
-	updateScreen(buttonOne);
+    updateScreen(buttonOne);
+
 });
 
 buttonTwo.addEventListener('click', function() {
