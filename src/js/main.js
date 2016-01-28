@@ -4,6 +4,7 @@
 
 'use strict';
 
+
 	var buttonClear = document.getElementById('button-clear');
 	var buttonPlusMinus = document.getElementById('button-plus-minus');
 	var buttonPercent = document.getElementById('button-percent');
@@ -24,96 +25,98 @@
 	var buttonDecimal = document.getElementById('button-decimal');
 	var buttonEquals = document.getElementById('button-equals');
 	var calcScreen = document.getElementById('screen');
-	var tempValue;
-	var secondValue;
 	var calculation;
+
+
+// Function to clear the calculator screen
 
 function clearScreen() {
 	calcScreen.innerHTML='0';
 }
 
+/*
+* @description Updates the screen display
+with the value of the button pressed
+*/
 function updateScreen(button) {
 	if (Number(calcScreen.innerHTML) === 0) {
-		calcScreen.innerHTML = button.innerHTML;
+		calcScreen.innerHTML = button.value;
 	} else {
-		calcScreen.innerHTML += button.innerHTML;
+		calcScreen.innerHTML += button.value;
 	}
 }
 
-
+/*
+* @description Gets the value displayed on the calculator screen
+* and appends it to a string variable called calculation
+*/
 function getValue() {
-	 	tempValue = Number(calcScreen.innerHTML);
+	 	calculation = Number(calcScreen.innerHTML);
 		clearScreen();
 }
 
+/*
+* @description Evaluate the string 'calculation' as if it
+* were numerical and display result on the calculator screen
+*/
 function calculate() {
-	var value1= tempValue;
-	var value2 = Number(calcScreen.innerHTML);
-	var operator;
+	calculation += Number(calcScreen.innerHTML);
 
-	switch (calculation) {
-		case '?':
-			operator = '-';
-			break
-		case '×':
-			operator = '*';
-			break;
-		case '÷':
-			operator = '/';
-			break;
-		case '+':
-			operator = '+';
-			break;
-		default:
-			break;
-	}
-	console.log('calculation: ' + calculation);
-	console.log('operator: ' + operator);
-	var result = eval(value1 + operator + value2);
+	var result = eval(calculation);
 	calcScreen.innerHTML = result;
-
-
-
 }
 
 
-
+/*
+* @event
+* @description Event listener for the addition button
+*/
 buttonAddition.addEventListener('click', function(e) {
-	e = e || window.event;
-	var target = e.target || e.srcElement,
-		text = target.textContent || text.innerText;
-	calculation = target.innerHTML;
-	getValue();
+    getValue();
+	calculation += buttonAddition.value;
 });
 
-buttonSubtraction.addEventListener('click', function(e) {
-	e = e || window.event;
-	var target = e.target || e.srcElement,
-		text = target.textContent || text.innerText;
-	calculation = target.innerHTML;
-	getValue();
+/*
+* @event
+* @description Event listener for the subtraction button
+*/
+buttonSubtraction.addEventListener('click', function() {
+    getValue();
+	calculation += buttonSubtraction.value;
 });
 
-buttonMultiply.addEventListener('click', function(f) {
-	f = f || window.event;
-	var target = f.target || f.srcElement,
-		text = target.textContent || text.innerText;
-	calculation = target.innerHTML;
-	getValue();
+/*
+* @event
+* @description Event listener for the multiplication button
+*/
+buttonMultiply.addEventListener('click', function() {
+    getValue();
+	calculation += buttonMultiply.value;
 });
 
-buttonDivide.addEventListener('click', function(e) {
-	e = e || window.event;
-	var target = e.target || e.srcElement,
-		text = target.textContent || text.innerText;
-	calculation = target.innerHTML;
-	getValue();
+/*
+* @event
+* @description Event listener for the division button
+*/
+buttonDivide.addEventListener('click', function() {
+    getValue();
+	calculation += buttonDivide.value;
 });
 
+/*
+* @event
+* @description Event listener for the equals button
+*/
 buttonEquals.addEventListener('click', function () {
 	calculate();
+    calculation = ""
 })
 
+
+/*
+* @event
+* @description Event listeners for the number buttons
+*/
 buttonOne.addEventListener('click', function() {
 	updateScreen(buttonOne);
 });
@@ -121,7 +124,6 @@ buttonOne.addEventListener('click', function() {
 buttonTwo.addEventListener('click', function() {
 	updateScreen(buttonTwo);
 });
-
 
 buttonThree.addEventListener('click', function() {
 	updateScreen(buttonThree);
@@ -147,6 +149,10 @@ buttonEight.addEventListener('click', function() {
 
 buttonNine.addEventListener('click', function() {
 	updateScreen(buttonNine);
+});
+
+buttonZero.addEventListener('click', function() {
+	updateScreen(buttonZero);
 });
 
 buttonClear.addEventListener('click', function () {

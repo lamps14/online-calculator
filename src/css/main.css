@@ -1,0 +1,43 @@
+* {
+    font-size: 18px;
+    font-family: Arial;
+}
+
+@font-face {
+    font-family: calculator-font;
+    src: url(Fonts/CalcFont/digital-7.woff2);
+}
+
+#screen {
+    border: solid 1px;
+    text-align: right;
+    background-color: #fff;
+    font-size: 48px;
+    font-family: calculator-font;
+}
+
+.calc-button {
+    font-size: 18px;
+}
+
+table {
+    border: solid;
+    margin: auto;
+    background-color: #000;
+    border-radius: 5px;
+}
+
+.calc-button {
+    width: 2em;
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 2px #888888;
+}
+
+#button-zero {
+    width: 4.2em;
+}
