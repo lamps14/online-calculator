@@ -44,8 +44,7 @@ function updateScreen(button) {
     if (Number(calcScreen.innerHTML)===result) {
         clearScreen();
     }
-
-
+    
 	if (Number(calcScreen.innerHTML) === 0) {
 		calcScreen.innerHTML = button.value;
 	} else {
