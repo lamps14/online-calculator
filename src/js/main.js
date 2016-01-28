@@ -28,15 +28,16 @@
 	var calculation;
 
 
-// Function to clear the calculator screen
-
+/*
+* @description Clears the calculator screen
+*/
 function clearScreen() {
 	calcScreen.innerHTML='0';
 }
 
 /*
 * @description Updates the screen display
-with the value of the button pressed
+* with the value of the button pressed
 */
 function updateScreen(button) {
 	if (Number(calcScreen.innerHTML) === 0) {
@@ -64,8 +65,7 @@ function calculate() {
 
 	var result = eval(calculation);
 	calcScreen.innerHTML = result;
-}
-
+};
 
 /*
 * @event
@@ -110,8 +110,7 @@ buttonDivide.addEventListener('click', function() {
 buttonEquals.addEventListener('click', function () {
 	calculate();
     calculation = ""
-})
-
+});
 
 /*
 * @event
