@@ -1,6 +1,6 @@
 * {
     font-size: 18px;
-    font-family: Arial;
+    font-family: Arial, sans-serif;
 }
 
 @font-face {
@@ -30,35 +30,52 @@
 
 #screen {
     border: solid 1px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 25px 5px;
+    border-bottom: solid 2px;
     text-align: right;
     background-color: #fff;
-    font-size: 48px;
+    font-size: 30px;
     font-family: calculator-font1, calculator-font2,
-    calculator-font3, calculator-font4, calculator-font5, Arial;
+    calculator-font3, calculator-font4, calculator-font5, sans-serif;
 }
 
 .calc-button {
     font-size: 18px;
 }
 
-table {
-    border: solid;
+#calculator {
+    width: 40%;
+    height: 100%;
+    border: solid 5px;
     margin: auto;
     background-color: #000;
-    border-radius: 5px;
+    border-radius: 20px;
 }
 
 .calc-button {
-    width: 2em;
+    float: left;
+    width: 25%;
+    font-size: 18px;
     background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
+    border: solid 1px;
+    color: black;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
-    box-shadow: 2px #888888;
+    padding: 25px;
 }
 
+
 #button-zero {
-    width: 4.2em;
+    width: 50%;
+    border-bottom-left-radius: 20px;
+}
+
+#button-equals {
+    border-bottom-right-radius: 20px;
+}
+.row{
+    overflow: hidden;  /* "overflow: auto;" works just as well instead */
+    width:100%;        /* Helps older versions of IE */
 }
