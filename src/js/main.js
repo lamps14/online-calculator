@@ -70,6 +70,8 @@ function calculate() {
 
 	result = eval(calculation);
 	calcScreen.innerHTML = result;
+	calculation = ""
+	result = 0;
 };
 
 /*
@@ -108,14 +110,20 @@ buttonDivide.addEventListener('click', function() {
 	calculation += buttonDivide.value;
 });
 
+buttonPercent.addEventListener('click', function() {
+	getValue();
+	calculation += buttonPercent.value;
+});
+
+
 /*
 * @event
 * @description Event listener for the equals button
 */
 buttonEquals.addEventListener('click', function () {
 	calculate();
-    calculation = ""
 });
+
 
 /*
 * @event
@@ -148,6 +156,7 @@ buttonSix.addEventListener('click', function() {
 buttonSeven.addEventListener('click', function() {
 	updateScreen(buttonSeven);
 });
+
 buttonEight.addEventListener('click', function() {
 	updateScreen(buttonEight);
 });
@@ -160,6 +169,25 @@ buttonZero.addEventListener('click', function() {
 	updateScreen(buttonZero);
 });
 
+buttonDecimal.addEventListener('click', function() {
+	updateScreen(buttonDecimal);
+});
+
+
 buttonClear.addEventListener('click', function () {
 	clearScreen();
 });
+
+buttonPlusMinus.addEventListener('click', function() {
+
+	if (calcScreen.innerHTML.substr(0, 1) === '-') {
+		calcScreen.innerHTML = calcScreen.innerHTML.substr(1, ((calcScreen.innerHTML.length)-1));
+	} else {
+		calcScreen.innerHTML = '-' + calcScreen.innerHTML;
+	}
+
+});
+
+
+
+
