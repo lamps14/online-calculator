@@ -72,7 +72,7 @@ function calculate() {
 	calcScreen.innerHTML = result;
 	calculation = ""
 	result = 0;
-};
+}
 
 /*
 * @event
