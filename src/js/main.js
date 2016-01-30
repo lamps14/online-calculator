@@ -25,8 +25,13 @@
 	var buttonDecimal = document.getElementById('button-decimal');
 	var buttonEquals = document.getElementById('button-equals');
 	var calcScreen = document.getElementById('screen');
-	var calculation;
+    var calculator = document.getElementById('calc-container')
+	var calculation = '';
     var result;
+
+
+
+
 
 /*
 * @description Clears the calculator screen
@@ -41,9 +46,12 @@ function clearScreen() {
 */
 function updateScreen(button) {
 
+    calculationHandler();
+
     if (Number(calcScreen.innerHTML)===result) {
-        clearScreen();
         result = 0;
+        clearScreen();
+
     }
 
 	if (Number(calcScreen.innerHTML) === 0) {
@@ -51,6 +59,11 @@ function updateScreen(button) {
 	} else {
 		calcScreen.innerHTML += button.value;
 	}
+
+    if (calculation.substr(calculation.length-1, 1) === '+' || calculation.substr(calculation.length-1, 1) === '-' ||
+    calculation.substr(calculation.length-1, 1) === '/' || calculation.substr(calculation.length-1, 1) === '*') {
+        calcScreen.innerHTML = button.value
+    }
 }
 
 /*
@@ -58,9 +71,10 @@ function updateScreen(button) {
 * and appends it to a string variable called calculation
 */
 function getValue() {
+        calculationHandler();
 	 	calculation = Number(calcScreen.innerHTML);
-		clearScreen();
 }
+
 
 /*
 * @description Evaluate the string 'calculation' as if it
@@ -68,20 +82,48 @@ function getValue() {
 */
 function calculate() {
 	calculation += Number(calcScreen.innerHTML);
-
 	result = eval(calculation);
 	calcScreen.innerHTML = result;
-	calculation = ""
+	calculation = '';
+    calculationHandler();
 }
+
+
 
 /*
 * @event
 * @description Event listener for the addition button
 */
-buttonAddition.addEventListener('click', function(e) {
+buttonAddition.addEventListener('click', function() {
     getValue();
 	calculation += buttonAddition.value;
 });
+
+function updateScreenWithKeyPress(keyValue) {
+
+    if (Number(calcScreen.innerHTML)===result) {
+        clearScreen();
+    }
+
+	if (Number(calcScreen.innerHTML) === 0) {
+		calcScreen.innerHTML = keyValue;
+	} else {
+		calcScreen.innerHTML += keyValue;
+	}
+
+    if (calculation.substr(calculation.length-1, 1) === '+' || calculation.substr(calculation.length-1, 1) === '-' ||
+    calculation.substr(calculation.length-1, 1) === '/' || calculation.substr(calculation.length-1, 1) === '*') {
+        calcScreen.innerHTML = keyValue
+    }
+}
+
+function calculationHandler() {
+
+    if (calcScreen.innerHTML === result) {
+        return;
+    }
+}
+
 
 /*
 * @event
@@ -123,7 +165,6 @@ buttonPercent.addEventListener('click', function() {
 buttonEquals.addEventListener('click', function () {
 	calculate();
 });
-
 
 /*
 * @event
@@ -186,4 +227,41 @@ buttonPlusMinus.addEventListener('click', function() {
 		calcScreen.innerHTML = '-' + calcScreen.innerHTML;
 	}
 
+});
+
+calculator.addEventListener('keypress', function(event) {
+    switch (event.keyCode) {
+        case 48:
+            updateScreenWithKeyPress(0);
+            break;
+        case 49:
+            updateScreenWithKeyPress(1);
+            break;
+        case 50:
+            updateScreenWithKeyPress(2);
+            break;
+        case 51:
+            updateScreenWithKeyPress(3);
+            break;
+        case 52:
+            updateScreenWithKeyPress(4);
+            break;
+        case 53:
+            updateScreenWithKeyPress(5);
+            break;
+        case 54:
+            updateScreenWithKeyPress(6);
+            break;
+        case 55:
+            updateScreenWithKeyPress(7);
+            break;
+        case 56:
+            updateScreenWithKeyPress(8);
+            break;
+        case 57:
+            updateScreenWithKeyPress(9);
+            break;
+        default:
+            break;
+    };
 });
