@@ -58,9 +58,10 @@
     float: left;
     width: 25%;
     font-size: 18px;
-    background-color: #4CAF50; /* Green */
+    background-color:  #ff0000; /* Green */
     border: solid 1px;
-    color: black;
+    border-color: #000;
+    color: #fff;
     text-align: center;
     text-decoration: none;
     padding: 25px;

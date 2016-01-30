@@ -43,8 +43,9 @@ function updateScreen(button) {
 
     if (Number(calcScreen.innerHTML)===result) {
         clearScreen();
+        result = 0;
     }
-    
+
 	if (Number(calcScreen.innerHTML) === 0) {
 		calcScreen.innerHTML = button.value;
 	} else {
@@ -71,7 +72,6 @@ function calculate() {
 	result = eval(calculation);
 	calcScreen.innerHTML = result;
 	calculation = ""
-	result = 0;
 }
 
 /*
@@ -187,7 +187,3 @@ buttonPlusMinus.addEventListener('click', function() {
 	}
 
 });
-
-
-
-
