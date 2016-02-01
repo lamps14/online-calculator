@@ -28,6 +28,25 @@
     src: url(../../fonts/digital-7.woff);
 }
 
+.heading {
+    font-family: calculator-font1, calculator-font2,
+    calculator-font3, calculator-font4, calculator-font5, sans-serif;
+    font-size: 72px;
+    text-align: center;
+    padding: 0px;
+}
+
+.small-heading {
+    position: relative;
+    top: -50px;
+    font-size: 24px;
+    font-family: Arial, sans-serif;
+}
+
+#calc-container {
+    background-color: #fae9cf;
+}
+
 #screen {
     border: solid 1px;
     border-top-left-radius: 20px;
@@ -44,8 +63,9 @@
 
 
 #calculator {
+    position: relative;
+    top: -35px;
     width: 40%;
-    height: 100%;
     border: solid 5px;
     margin: auto;
     background-color: #000;
